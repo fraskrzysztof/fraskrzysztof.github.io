@@ -1,0 +1,149 @@
+/* Resetowanie podstawowych stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr; /* Wysokość wierszy dostosowuje się do zawartości */
+    grid-template-areas: 
+        "aboutme projekty"
+        "cv projekty";
+    gap: 20px;
+    padding: 20px;
+    max-width: 1500px;
+    min-width: 1500px;
+    margin: auto;
+}
+
+section {
+    padding: 10px;
+    
+   
+    
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: flex-start; /* Centruje elementy wertykalnie */
+    justify-content: space-between; /* Rozdziela tekst i obraz */
+}
+
+.text, .image {
+    flex: 1; /* Daje tekstowi i obrazowi równą szerokość */
+    padding: 10px; /* Dodaje odstęp między tekstem a obrazem */
+}
+
+.image img {
+flex: 0 0 50%;
+    width: 100%; /* Sprawia, że obraz skaluje się do dostępnej szerokości */
+    width: auto; /* Maksymalna szerokość obrazu */
+    max-height: 170px; /* Zachowuje proporcje obrazu */
+    border-radius: 15px;
+}
+
+#aboutme {
+  grid-area: aboutme;
+  border: 4px solid #ddd;
+  padding: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+#cv {
+  grid-area: cv;
+  border: 4px solid #ddd;
+  padding: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+
+}
+
+
+#projekty {
+  grid-area: projekty;
+  border: 4px solid #ddd;
+  padding: 20px;
+  margin-left: 5px;
+    grid-row: 1 / span 2;
+}
+
+
+
+#projekty ul {
+  list-style: none;
+  padding: 0;
+}
+
+#projekty li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #ddd;
+}
+
+#projekty h3 {
+  margin-top: 0;
+}
+
+#projekty a {
+  text-decoration: none;
+  color: #333;
+}
+
+#projekty a:hover {
+  color: #000;
+}
+
+#aboutme .content-wrapper {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+    grid-template-rows: 1fr auto;
+  align-items: center;
+}
+
+#aboutme .image2 img {
+ grid-column: 2;
+  /*margin-right: auto; /* Wyrównuje obrazek do prawej strony */
+  width: auto; /* Pozwala obrazkowi zachować swoją naturalną szerokość */
+  height: 350px; /* Zachowuje proporcje obrazka */
+  border-radius: 15px;
+ 
+}
+
+#aboutme .text {
+  grid-column: 1;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.container {
+    max-width: 500px; /* Maksymalna szerokość całego kontenera */
+    margin: auto; /* Wyśrodkowuje kontener na stronie */
+}
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
