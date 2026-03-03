@@ -1,4 +1,4 @@
-/* Resetowanie podstawowych stylów */
+/* 1. RESET I PODSTAWY */
 * {
     margin: 0;
     padding: 0;
@@ -8,215 +8,170 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: #f4f4f4;
 }
 
 header {
     background-color: #333;
     color: #fff;
-    padding: 20px 0;
+    padding: 30px 0;
     text-align: center;
 }
 
+/* 2. UKŁAD GŁÓWNY (DESKTOP) */
 main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr; /* Wysokość wierszy dostosowuje się do zawartości */
+    grid-template-rows: auto;
     grid-template-areas: 
         "aboutme projekty"
         "cv projekty";
     gap: 20px;
     padding: 20px;
-    max-width: 1500px;
-    min-width: 1500px;
-    margin: auto;
+    max-width: 1500px; /* Zmniejszone z 1500px dla lepszej czytelności */
+    margin: 0 auto;
 }
 
 section {
-    padding: 10px;
-    
-   
-    
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd; /* Subtelniejsze niż 4px */
+    border-radius: 8px;
 }
 
-.content-wrapper {
-    display: flex;
-    align-items: flex-start; /* Centruje elementy wertykalnie */
-    justify-content: space-between; /* Rozdziela tekst i obraz */
-}
+/* PRZYPISANIE OBSZARÓW */
+#aboutme { grid-area: aboutme; }
+#cv { grid-area: cv; }
+#projekty { grid-area: projekty; }
 
-.text, .image {
-    flex: 1; /* Daje tekstowi i obrazowi równą szerokość */
-    padding: 10px; /* Dodaje odstęp między tekstem a obrazem */
-}
-
-.image img {
-flex: 0 0 50%;
-    width: 100%; /* Sprawia, że obraz skaluje się do dostępnej szerokości */
-    width: auto; /* Maksymalna szerokość obrazu */
-    max-height: 170px; /* Zachowuje proporcje obrazu */
-    border-radius: 15px;
-}
-
-#aboutme {
-  grid-area: aboutme;
-  border: 4px solid #ddd;
-  padding: 20px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-
-#cv {
-  grid-area: cv;
-  border: 4px solid #ddd;
-  padding: 20px;
-  margin-right: 5px;
-  margin-left: 5px;
-
-}
-
-
-#projekty {
-  grid-area: projekty;
-  border: 4px solid #ddd;
-  padding: 20px;
-  margin-left: 5px;
-    grid-row: 1 / span 2;
-}
-
-
-
-#projekty ul {
-  list-style: none;
-  padding: 0;
-}
-
-#projekty li {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 2px solid #ddd;
-}
-
-#projekty h3 {
-  margin-top: 0;
-}
-
-#projekty a {
-  text-decoration: none;
-  color: #333;
-}
-
-#projekty a:hover {
-  color: #000;
-}
-
+/* 3. SEKCJA ABOUT ME */
 #aboutme .content-wrapper {
-  display: grid;
-  grid-template-columns: 5fr 2fr;
-    grid-template-rows: 1fr auto;
-  align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 200px; /* Tekst i mniejsza kolumna na foto */
+    gap: 20px;
+    align-items: start;
 }
 
 #aboutme .image2 img {
- grid-column: 2;
-  /*margin-right: auto; /* Wyrównuje obrazek do prawej strony */
-  width: auto; /* Pozwala obrazkowi zachować swoją naturalną szerokość */
-  height: 350px; /* Zachowuje proporcje obrazka */
-  border-radius: 15px;
- 
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
 }
 
-#aboutme .text {
-  grid-column: 1;
+/* 4. SEKCJA PROJEKTY (SIATKA KAFELKÓW) */
+.project-category {
+    margin-bottom: 30px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 15px;
+    padding: 0;
+    list-style: none;
+    margin-top: 15px;
+}
+
+.project-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.project-card a {
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.project-card .image img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-card .text {
+    padding: 12px;
+}
+
+.project-card h4 {
+    margin-bottom: 5px;
+    font-size: 1.05rem;
+}
+
+.project-card p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* 5. RESZTA STYLÓW (CV, FOOTER) */
+.data {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Pozwala dacie spaść niżej na wąskich ekranach */
+    margin-bottom: 5px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 10px 0;
 }
 
 footer {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 20px;
+    margin-top: 40px;
 }
 
-.container {
-    max-width: 500px; /* Maksymalna szerokość całego kontenera */
-    margin: auto; /* Wyśrodkowuje kontener na stronie */
-}
-@media (max-width: 768px) {
+/* 6. RESPONSYWNOŚĆ (MOBILE & TABLET) */
+
+@media (max-width: 1024px) {
     main {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Jedna kolumna na tabletach/telefonach */
+        grid-template-areas: 
+            "aboutme"
+            "projekty"
+            "cv";
     }
 }
 
+@media (max-width: 600px) {
+    #aboutme .content-wrapper {
+        grid-template-columns: 1fr; /* Foto nad tekstem na małych telefonach */
+    }
+    
+    #aboutme .image2 {
+        order: -1; /* Obrazek leci na górę */
+        text-align: center;
+    }
 
-/* 1. KONTENER SIATKI - Przywracamy układ obok siebie */
-.project-category ul {
-  display: grid;
-  /* Kolumny o szerokości ok. 250px - wejdą 3-4 w rzędzie */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 0;
-  list-style: none;
-  margin-top: 20px;
-}
+    #aboutme .image2 img {
+        max-width: 200px;
+    }
 
-/* 2. POJEDYNCZY KAFELEK - Zwarty, jedna bryła */
-.project-category li {
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  height: 320px; /* Zmniejszona wysokość, by nie były ogromne */
-  transition: transform 0.2s;
-}
+    /* Resetowanie wcięć inline z HTML dla lepszego wyglądu na mobile */
+    p {
+        text-indent: 0 !important; 
+        padding-left: 10px;
+    }
 
-.project-category li:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* 3. LINK I UKŁAD WEWNĘTRZNY */
-.project-category li a {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Wypełnia całe 320px kafelka */
-}
-
-/* 4. ZDJĘCIE - Dokładnie 2/3 wysokości (ok. 210px) */
-.project-category .image {
-  flex: 0 0 66%; /* Nie rośnie, nie kurczy się, trzyma 66% */
-  width: 100%;
-  overflow: hidden;
-}
-
-.project-category .image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 5. TEKST - Dokładnie 1/3 wysokości (ok. 110px) */
-.project-category .text {
-  flex: 0 0 34%; /* Trzyma 34% */
-  padding: 12px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.project-category .text h3 {
-  margin: 0 0 5px 0;
-  font-size: 1rem; /* Mniejszy font do mniejszych kafelków */
-  line-height: 1.2;
-}
-
-.project-category .text p {
-  margin: 0;
-  font-size: 0.85rem;
-  color: #666;
-  line-height: 1.3;
+    .data span {
+        width: 100%; /* Data pod nazwą firmy */
+        display: block;
+    }
 }
